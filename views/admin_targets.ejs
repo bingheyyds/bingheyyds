@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>站点管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/admin.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <h1>跳转站点管理</h1>
+      <form method="post" action="/admin/logout">
+        <button type="submit">退出登录（<%= user.username %>）</button>
+      </form>
+    </div>
+
+    <section class="card">
+      <h2>添加新站点</h2>
+      <form method="post" action="/admin/targets" class="form inline">
+        <input type="text" name="name" placeholder="名称（可选）" />
+        <input type="url" name="url" placeholder="完整URL，如 https://example.com" required />
+        <button type="submit">添加</button>
+      </form>
+      <p class="hint">提示：请填写包含协议的完整 URL（如 https:// 或 http://）。</p>
+    </section>
+
+    <section class="card">
+      <h2>站点列表</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>URL</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% targets.forEach(t => { %>
+            <tr>
+              <td><%= t.id %></td>
+              <td><%= t.name || '-' %></td>
+              <td><%= t.url %></td>
+              <td><%= t.is_active ? '启用' : '停用' %></td>
+              <td class="actions">
+                <form method="post" action="/admin/targets/<%= t.id %>/toggle" class="inline">
+                  <input type="hidden" name="is_active" value="<%= t.is_active ? 0 : 1 %>" />
+                  <button type="submit"><%= t.is_active ? '停用' : '启用' %></button>
+                </form>
+                <form method="post" action="/admin/targets/<%= t.id %>/delete" class="inline danger">
+                  <button type="submit" onclick="return confirm('确定删除该站点吗？')">删除</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>

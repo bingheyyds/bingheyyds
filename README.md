@@ -10,3 +10,5 @@
 <li>node seed_admin.js</li>
 <li>4.启动服务</li>
 <li>node server.js</li>
+<h2>成功运行后 网站后端地址是 127.0.0.1:3000/admin/login</h2>
+<h2>记得在.env 文件中修改数据库账号和密码

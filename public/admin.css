@@ -1,0 +1,18 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, Arial, sans-serif; background:#f7f8fa; color:#222; margin:0; }
+.wrap { max-width: 960px; margin: 40px auto; padding: 0 16px; }
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom: 16px; }
+h1, h2 { margin: 0 0 12px; }
+.card { background:#fff; padding:16px; border-radius:10px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom:16px; }
+.form { display:flex; flex-direction:column; gap:10px; }
+.form.inline { flex-direction:row; flex-wrap:wrap; gap:10px; }
+input[type="text"], input[type="password"], input[type="url"] { padding:8px 10px; border:1px solid #ddd; border-radius:6px; width:100%; max-width: 320px; }
+button { background:#3b82f6; color:#fff; padding:8px 12px; border:none; border-radius:6px; cursor:pointer; }
+button:hover { background:#2563eb; }
+.error { background:#fee2e2; color:#b91c1c; padding:10px; border-radius:6px; margin-bottom:10px; }
+.hint { color:#666; font-size:13px; }
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { padding:10px; border-bottom:1px solid #eee; text-align:left; }
+.actions { display:flex; gap:8px; }
+.inline { display:inline-block; }
+.inline.danger button { background:#ef4444; }
